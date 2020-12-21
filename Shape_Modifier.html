@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+      <head>
+            <style>
+                  html{
+                        min-height: 100%;
+                  }
+                  body{
+                     background: linear-gradient(to bottom right, rgba(255, 255, 255,0.6), rgba(8, 238, 8,1), rgba(0, 0, 0,0.92) 75%);
+                  }
+                  h1{
+                        text-align: center;
+                        margin-top: 5%;
+                        font-family:fantasy;
+                        text-transform: uppercase;
+                        text-decoration: underline;
+                  }
+                  #shape{
+                        margin: 0;
+                        position: relative;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        transition: width 1s, border-radius 1s;
+                  }
+                  .object{
+                        float: left;
+                        left: 34%;
+                        position: absolute;
+                        margin-top: 4.2%;
+                        background: radial-gradient(circle, rgb(228, 228, 228), rgb(94, 102, 180));
+                        border-radius: 5px;
+                        border-width: 10px;
+                        border-style: solid;
+                        border-color: black;
+                  }                  
+                  button{
+                        width: 100px;
+                        height: 30px;
+                        margin-top: 10px;
+                        margin-left: 30px;
+                        padding-left: 5px;
+                        border-radius: 4px;
+                        box-shadow: 10px 10px 5px 2px yellow;
+                  }
+            </style>
+            
+      </head>
+      <body>
+          <h1>$$$ Shape Modifier $$$</h1>
+          <div class="object" style="height: 200px; width: 400px;">
+            <div id ="shape"></div>
+          </div> 
+          <button onclick="shape(1)" style="margin-top: 7%;">Rectangle</button><br><br>
+          <button onclick="shape(2)">Square</button><br><br>
+          <button onclick="shape(3)">Circle</button>
+      </body>
+      <script>
+          function shape(no){ 
+            if(no==1){
+                  document.getElementById('shape').style['width']='200px';
+                  document.getElementById('shape').style['height']='100px';
+                  document.getElementById('shape').style['border-radius']='0%';
+                  document.getElementById('shape').style['background-color']='red';
+            }
+            else if(no==2){
+                  document.getElementById('shape').style['width']='100px';
+                  document.getElementById('shape').style['height']='100px';
+                  document.getElementById('shape').style['border-radius']='0%';
+                  document.getElementById('shape').style['background-color']='yellow';
+            }
+            else{
+                  document.getElementById('shape').style['width']='100px';
+                  document.getElementById('shape').style['height']='100px';
+                  document.getElementById('shape').style['background-color']='green';
+                  document.getElementById('shape').style['border-radius']='50%';
+            }
+      }
+           
+      </script>
+</html>
