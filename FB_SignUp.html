@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        #fb{
+            position: relative;
+            height: 75px;  
+            background: linear-gradient( #4e71bd, #3b5998);
+            background-color: #3b5998; 
+            margin: 0px; 
+            padding: 0px; 
+            border: 0px;
+        }
+    </style>    
+    <title>FB Login/SignUp</title>
+</head>
+<body>
+    <div id="fb">   
+        <h1>facebook
+          <button type="button">Log in into existing account</button>
+        </h1> 
+    </div>   
+    <div class="content">
+        <h1>Create a new account</h1>
+        <h3>It's quick and easy.</h1>
+
+        <form>
+            <input type = "text" placeholder = "First name" style = "width: 200px;">
+            <input type = "text" placeholder = "Surname" style = "width: 200px;"> <br>
+            <br><input type = "text" placeholder = "Mobile number or email address" style = "width: 419px;"> <br>
+            <br><input type = "password" placeholder = "New password" style = "width: 419px;">
+
+            <h4 style = "color: grey; font-size: 18px; margin-bottom: 6px;">Date of birth</h4>
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>10</option>
+            </select>
+            <select>
+                <option>Jan</option>
+                <option>Feb</option>
+                <option>Mar</option>
+            </select>
+            <select>
+                <option>2020</option>
+                <option>2019</option>
+                <option>2018</option>
+            </select>
+            
+            <h4 style = "color: grey; font-size: 18px; margin-bottom: 7px;">Gender</h4>
+            <input type = "radio" id="female" name= "gender" style="margin-left: 10px;">
+            <label for="female" style="font-family: inherit; font-size: 18px; color: rgb(24, 24, 24);">Female</label>
+            <input type = "radio" id="male" name= "gender">
+            <label for="male" style="font-family: inherit; font-size: 18px; color: rgb(24, 24, 24);">Male</label>
+            <input type = "radio" id="custom" name= "gender">
+            <label for="custom" style="font-family: inherit; font-size: 18px; color: rgb(24, 24, 24);">Custom</label>
+        </form>
+        <p>By clicking Sign Up, you agree to our <a href="/legal_terms/" target="_blank" rel="nofollow">Terms</a>, <a href="/about_privacy/" target="_blank" rel="nofollow">Data Policy</a> and <a href="/policies_cookies/" target="_blank" rel="nofollow">Cookie Policy</a>. You may receive SMS notifications from us and can opt out at any time.</p>
+        <br>
+        <span class="sign"><button>Sign Up</button></span>
+        <br><br>
+    </div>
+</body>
+</html>
