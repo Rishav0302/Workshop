@@ -1,0 +1,220 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <title>DTU_DATABASE</title>    
+ <style>
+     html{
+         min-height: 100%;
+     }
+     table{
+         width: fit-content;
+         margin-left: 10px;
+     }
+     th{
+         background: radial-gradient( white, yellow, orange);
+     }
+     th,td,tr{
+        text-align: center;
+        font-size: 18px;
+        padding-left: 3px;
+        padding-right: 3px;
+     }
+     body{
+         margin: 0px;
+         padding: 0px;
+         z-index: 100;
+         overflow: scroll;
+         background: linear-gradient(to bottom left, rgb(235, 167, 220), yellowgreen, rgb(104, 164, 241));
+     }
+     body::before{
+         margin: 0px;
+         padding: 0px;
+         top: 0;
+         left: 0;
+         content: '';
+         position: absolute;
+         height: 100%;
+         width: 100%;
+         z-index: -100;
+         background:linear-gradient(to bottom left, yellowgreen, rgb(104, 164, 241), rgb(235, 167, 220));
+         background-repeat: repeat-x,repeat-y;
+         animation: mov 2s infinite ease-in-out;
+         animation-direction: alternate-reverse;
+     }
+     .ani{
+         background: radial-gradient( white, yellow, rgb(255, 123, 0));
+         animation: change 8s infinite ease-in-out;
+         text-align: center;
+     }
+     input[type='text'],input[type='number'],input[type='email']{
+        padding: 3px;
+        border-radius: 8%;
+        border-width: 0px;
+        font-size: 16px;
+     }
+     button{
+         border-radius: 10px;
+         font-size: 13px;
+         font-weight: bold;
+         background: linear-gradient(to bottom, white, rgb(146, 143, 143));
+         box-shadow: 16px black;
+         padding: 3px;
+         border-width: 3px;
+         mix-blend-mode: difference;
+     }
+     @keyframes mov{
+         from{
+            opacity: 1;
+         }
+         to{
+            opacity: 0;
+         }
+     }
+     @keyframes change{
+         from{
+             opacity: 1;
+         }
+         to{
+             opacity: 0;
+         }
+     }
+ </style>
+ </head>
+ <body>
+     <h1 style="margin-left: 40%; font-size: 36px; color: whitesmoke;">DTU_DATABASE</h1><hr><hr>
+     <p style="font-size: 22px; font-weight: bold; color: rgb(10, 10, 10); margin-left: 6px;">Update DATABASE for : <span>
+        <input type="radio" style="margin-left: 30px" id="stud" name="cate" value="student" onchange="Start(1);">
+        <label for="stud">Student</label>
+        <input type="radio" style="margin-left: 30px" id="teach" name="cate" value="teacher" onchange="Start(2);">
+        <label for="teach">Teacher</label>
+     </span></p>
+     <div id="st" style="display: none;">
+        <input type="text" placeholder="Name" id="name" style="margin-left:8px;">
+        <input type="text" placeholder="Gender" id="gender" style="margin-left:20px;">
+        <input type="text" placeholder="Roll No" id="roll" style="margin-left:20px;">
+        <input type="text" placeholder="Batch" id="batch" style="margin-left:20px;"><br><br>
+        <input type="text" placeholder="Branch" id="branch" style="margin-left:8px;">
+        <input type="number" placeholder="Phone" id="phone" style="margin-left:20px;">
+        <input type="text" placeholder="Year Of Passing" id="yop" style="margin-left:20px;"><br><br>
+        <button onclick="add(1)" style="margin-left:8px;">Add Student</button>
+        <button onclick="upd(1)" style="margin-left:10px;">Update Student_Table</button>
+     </div>
+     <div id="te" style="display: none;">
+        <input type="text" placeholder="Name" id="name1" style="margin-left:8px;">
+        <input type="text" placeholder="Gender" id="gender1" style="margin-left:20px;">
+        <input type="text" placeholder="Teacher_ID" id="te_id" style="margin-left:20px;"><br><br>
+        <input type="text" placeholder="Profession" id="prof" style="margin-left:8px;">
+        <input type="text" placeholder="Position" id="position" style="margin-left:20px;">
+        <input type="email" placeholder="E-Mail" id="email" style="margin-left:20px;"><br><br>
+        <button onclick="add(2)" style="margin-left:8px;">Add Teacher</button>
+        <button onclick="upd(2)" style="margin-left:10px;">Update Teacher_Table</button>
+     </div><br><br>                
+    <table border=5 id="ta" style="display: none;">
+        <tr>
+            <td colspan="8" class="ani"><strong>STUDENT's TABLE</strong></td>
+        </tr>
+        <tr><th>S.No.</th><th>Name</th><th>Gender</th><th>Roll No</th><th>Batch</th><th>Branch</th>
+        <th>Phone</th><th>Year of Passing</th></tr>
+    </table><br><hr>
+    <button onclick="Show(1)" style="margin-left:6px;">Show/Hide Student_Table</button><br><hr><hr><br>
+    <table border=5 id="ta1" style="display: none;">
+        <tr>
+            <td colspan="7" class="ani"><strong>TEACHER's TABLE</strong></td>
+        </tr>
+        <tr><th>S.No.</th><th>Name</th><th>Gender</th><th>Teacher_ID</th><th>Profession</th><th>Position</th>
+        <th>E-Mail</th></tr>
+    </table><br><hr>
+    <button onclick="Show(2)" style="margin-left:6px;">Show/Hide Teacher_Table</button>
+ </body>
+ <script>
+    var i=0;
+    var j=0;
+    var ctr=0;
+    var ctr1=0;
+    var dtu={
+          student:[],
+          teacher:[]
+    }
+    function Start(n){
+        if(n==1){
+            document.getElementById('te').style.display='none';
+            document.getElementById('st').style.display='block';
+        }
+        else{
+            document.getElementById('st').style.display='none';
+            document.getElementById('te').style.display='block';
+        }
+    }
+    function upd(u){
+        if(u==1){
+            var t=document.getElementById('ta');
+            for(i;i<dtu.student.length;++i){
+                t.innerHTML+='<tr><th>'+(i+1)+'</th>'+'<td>'+dtu.student[i].name+'</td>'+'<td>'+dtu.student[i].gender+'</td>'+'<td>'+dtu.student[i].roll+'</td>'+'<td>'+dtu.student[i].batch+'</td>'+'<td>'+dtu.student[i].branch+'</td>'+'<td>'+dtu.student[i].phone+'</td>'+'<td>'+dtu.student[i].yop+'</td></tr>';
+            }
+        }
+        else{
+            var t1=document.getElementById('ta1');
+            for(j;j<dtu.teacher.length;++j){
+                t1.innerHTML+='<tr><th>'+(j+1)+'</th>'+'<td>'+dtu.teacher[j].name1+'</td>'+'<td>'+dtu.teacher[j].gender1+'</td>'+'<td>'+dtu.teacher[j].te_id+'</td>'+'<td>'+dtu.teacher[j].prof+'</td>'+'<td>'+dtu.teacher[j].position+'</td>'+'<td>'+dtu.teacher[j].email+'</td></tr>';
+            }
+        }    
+    }
+    function add(z){
+        if(z==1){
+            var name=document.getElementById('name').value;
+            var gender=document.getElementById('gender').value;
+            var roll=document.getElementById('roll').value;
+            var batch=document.getElementById('batch').value;
+            var branch=document.getElementById('branch').value;
+            var phone=document.getElementById('phone').value;
+            var yop=document.getElementById('yop').value;
+            dtu.student.push({'name':name,'gender':gender,'roll':roll,'batch':batch,'branch':branch,'phone':phone,'yop':yop});
+            document.getElementById('name').value='';
+            document.getElementById('gender').value='';
+            document.getElementById('roll').value='';
+            document.getElementById('batch').value='';
+            document.getElementById('branch').value='';
+            document.getElementById('phone').value='';
+            document.getElementById('yop').value='';
+        }
+        else{
+            var name1=document.getElementById('name1').value;
+            var gender1=document.getElementById('gender1').value;
+            var te_id=document.getElementById('te_id').value;
+            var prof=document.getElementById('prof').value;
+            var position=document.getElementById('position').value;
+            var email=document.getElementById('email').value;
+            dtu.teacher.push({'name1':name1,'gender1':gender1,'te_id':te_id,'prof':prof,'position':position,'email':email});
+            document.getElementById('name1').value='';
+            document.getElementById('gender1').value='';
+            document.getElementById('te_id').value='';
+            document.getElementById('prof').value='';
+            document.getElementById('position').value='';
+            document.getElementById('email').value='';
+        }
+    }   
+    function Show(v){
+        if(v==1){
+            if (ctr==0){
+                document.getElementById('ta').style.display="block";
+                ctr=1;
+            }
+            else{
+                document.getElementById('ta').style.display="none";
+                ctr=0;
+            }
+        }
+        else{
+            if (ctr1==0){
+                document.getElementById('ta1').style.display="block";
+                ctr1=1;
+            }
+            else{
+                document.getElementById('ta1').style.display="none";
+                ctr1=0;
+            }
+        }    
+    } 
+</script>
+
+ </html>
