@@ -89,7 +89,7 @@
         <h1 style="margin-left: 40%; font-size: 36px; color: whitesmoke;">DTU_DATABASE</h1><hr><hr>
      </div>
      <p style="font-size: 22px; font-weight: bold; color: rgb(10, 10, 10); margin-left: 6px;">Update DATABASE for : <span>
-        <input type="radio" style="margin-left: 30px" id="stud" name="cate" value="student" onchange="Start(1); viewcount();">
+        <input type="radio" style="margin-left: 30px" id="stud" name="cate" value="student" onchange="Start(1);">
         <label for="stud">Student</label>
         <input type="radio" style="margin-left: 30px" id="teach" name="cate" value="teacher" onchange="Start(2);">
         <label for="teach">Teacher</label>
@@ -221,20 +221,6 @@
             }
         }    
     } 
-    function viewcount() {
-        if(typeof(Storage) !== "undefined") {
-            if (localStorage.clickcount) {
-                localStorage.clickcount = Number(localStorage.clickcount)+1;
-            } 
-            else {
-                localStorage.clickcount = 1;
-            }
-            console.log(localStorage.clickcount);
-        } 
-        else {
-            console.log("Sorry, your browser does not support web storage...");
-        }
-    }
 </script>
 
  </html>
