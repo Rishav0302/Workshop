@@ -10,6 +10,10 @@
          width: fit-content;
          margin-left: 10px;
      }
+     td{
+         background-color: blanchedalmond;
+         opacity: 0.6;
+     }
      th{
          background: radial-gradient( white, yellow, orange);
      }
@@ -38,12 +42,12 @@
          z-index: -100;
          background:linear-gradient(to bottom left, yellowgreen, rgb(104, 164, 241), rgb(235, 167, 220));
          background-repeat: repeat-x,repeat-y;
-         animation: mov 2s infinite ease-in-out;
+         animation: mov 4s infinite ease-in-out;
          animation-direction: alternate-reverse;
      }
      .ani{
          background: radial-gradient( white, yellow, rgb(255, 123, 0));
-         animation: change 8s infinite ease-in-out;
+         animation: change 8s infinite ease-in-out alternate-reverse;
          text-align: center;
      }
      input[type='text'],input[type='number'],input[type='email']{
@@ -75,13 +79,15 @@
              opacity: 1;
          }
          to{
-             opacity: 0;
+             opacity: 0.6;
          }
      }
  </style>
  </head>
  <body>
-     <h1 style="margin-left: 40%; font-size: 36px; color: whitesmoke;">DTU_DATABASE</h1><hr><hr>
+     <div style="background-color: black; opacity: 0.7;">
+        <h1 style="margin-left: 40%; font-size: 36px; color: whitesmoke;">DTU_DATABASE</h1><hr><hr>
+     </div>
      <p style="font-size: 22px; font-weight: bold; color: rgb(10, 10, 10); margin-left: 6px;">Update DATABASE for : <span>
         <input type="radio" style="margin-left: 30px" id="stud" name="cate" value="student" onchange="Start(1);">
         <label for="stud">Student</label>
